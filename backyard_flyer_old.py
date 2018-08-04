@@ -44,7 +44,7 @@ class BackyardFlyer(Drone):
                 self.all_waypoints = self.calculate_box()
                 self.waypoint_transition()
         elif self.flight_state == States.WAYPOINT:
-            if np.linalg.norm(self.target_position[0:2] - self.local_position[0:2]) < 1.0:
+            if np.linalg.norm(self.target_position[0:2] - self.local_position[0:2]) < 5.0:
                 if len(self.all_waypoints) > 0:
                     self.waypoint_transition()
                 else:
@@ -84,7 +84,7 @@ class BackyardFlyer(Drone):
         1. Return waypoints to fly a box
         """
         print("calculatee box")
-        waypoints_to_fly_box= [(12,0,8,0),(12,12,8,0),(0,12,8,0),(0,0,8,0)]
+        waypoints_to_fly_box= [(10.0,0.0,3.0,0.0),(10.0,10.0,3.0,0.0),(0.0,10.0,3.0,0.0),(0.0,0.0,3.0,0.0)]
         return waypoints_to_fly_box
             
     def arming_transition(self):
